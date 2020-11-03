@@ -11,8 +11,11 @@ export class CheckTokenMiddleware implements NestMiddleware {
     if (req.method == 'POST') {
       next()
     }
-    else if (req.params['token'] == 'My-Token' || req.headers['token'] == 'My-Token')
-      next();
+    // else if (req.params['token'] == 'My-Token' || req.headers['token'] == 'My-Token')
+    //   next();
+    else if(req.params['id']){
+      next()
+    }
     else {
       // throw new ForbiddenException();
       throw new HttpBadtokenException();
