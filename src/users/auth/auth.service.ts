@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { User } from '../../interfaces/user.interface';
+import { User1 } from '../../interfaces/user.interface';
 import { UsersService } from '../users.service';
 import {sign,verify} from 'jsonwebtoken'
 
@@ -8,9 +8,9 @@ export class AuthService {
     constructor(private myUserService: UsersService) {
 
     }
-    authenticate(username, password): User {
-        let token = sign({username:username,password:password},'secret');
-        let user: User;
+    authenticate(username, password): User1 {
+        let token = sign({username:username,password:password},'secret23');
+        let user: User1;
         let usersList = [...this.myUserService.getAll()].map(i => ({ ...i }));
         user = usersList.find(user => user.username == username && user.password == password);
         user.token = token;
